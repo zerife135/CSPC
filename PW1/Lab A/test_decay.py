@@ -23,8 +23,6 @@ def test_rejects_negative_rate():
     with pytest.raises(ValueError):
         simulate(1000, -0.4)
 
-
-wtrtreggtg
 # TODO 2: test_matches_law
 #   Check that the simulation's AVERAGE over many seeds is close to the
 #   physical law  N0 * exp(-lam * t).
@@ -33,5 +31,5 @@ def test_matches_law():
     N0, lam, dt = 10000, 0.4, 0.05
     avg = np.mean([simulate(N0, lam, dt=dt, seed=i) for i in range(200)], axis=0)
     t = np.arange(len(avg)) * dt
-    expected = N0 * 0np.exp(-lam * t)
+    expected = N0 * np.exp(-lam * t)
     assert avg == pytest.approx(expected, rel=0.05)
